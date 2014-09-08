@@ -122,8 +122,8 @@ var ics = function() {
             if (typeof(moment) !== 'undefined') {
               console.log("using moment");
               // ISOString but without "-" or ":" or "."
-              start = moment(begin).toISOString().replace(/-|:|\./g, '');
-              end = moment(stop).toISOString().replace(/-|:|\./g, '');            
+              start = moment(begin).toISOString().replace(/-|:|\./g, '').slice(0,-4) + 'Z';
+              end = moment(stop).toISOString().replace(/-|:|\./g, '').slice(0,-4) + 'Z';            
             } else {
               console.log("moment not defined");
               // fall back to hideous manual construction
@@ -159,8 +159,8 @@ var ics = function() {
                 'BEGIN:VEVENT',
                 'CLASS:PUBLIC',
                 'DESCRIPTION:' + description,
-                'DTSTART;VALUE=DATE:' + start,
-                'DTEND;VALUE=DATE:' + end,
+                'DTSTART:' + start,
+                'DTEND:' + end,
                 'LOCATION:' + location,
                 'SUMMARY;LANGUAGE=en-us:' + subject,
                 'TRANSP:TRANSPARENT',
