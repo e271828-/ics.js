@@ -6,7 +6,7 @@ var ics = function() {
 
     if (navigator.userAgent.indexOf('MSIE') > -1 && navigator.userAgent.indexOf('MSIE 10') == -1) {
         console.log('Unsupported Browser');
-        return;
+        // return;
     }
 
     var SEPARATOR = (navigator.appVersion.indexOf('Win') !== -1) ? '\r\n' : '\n';
