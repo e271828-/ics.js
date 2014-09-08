@@ -43,10 +43,11 @@ var ics = function() {
          * @param  {string} begin       Beginning date of event
          * @param  {string} stop        Ending date of event
          */
-        'addEvent': function(subject, description, location, begin, stop, rrule) {
+        'addEvent': function(subject, description, url, location, begin, stop, rrule) {
             // I'm not in the mood to make these optional... So they are all required
             if (typeof subject === 'undefined' ||
                 typeof description === 'undefined' ||
+                typeof url === 'undefined' ||
                 typeof location === 'undefined' ||
                 typeof begin === 'undefined' ||
                 typeof stop === 'undefined'
@@ -155,10 +156,14 @@ var ics = function() {
               }
             }
 
+            // XXX for some reason adding URL drops our validator score from 100 to 99
+            // see: http://icalvalid.cloudapp.net/
+
             var calendarEvent = [
                 'BEGIN:VEVENT',
                 'CLASS:PUBLIC',
                 'DESCRIPTION:' + description,
+                'URL;VALUE=URI:' + url,
                 'DTSTART:' + start,
                 'DTEND:' + end,
                 'LOCATION:' + location,
