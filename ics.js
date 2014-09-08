@@ -115,8 +115,21 @@ var ics = function() {
             var end_time = 'T' + end_hours + end_minutes + end_seconds;
 
 
-            var start = start_year + start_month + start_day + start_time;
-            var end = end_year + end_month + end_day + end_time;
+            var start, end;
+
+            // if we have moment, use that
+            if (typeof(moment) !== 'undefined') {
+              console.log("using moment");
+              // ISOString but without "-" or ":" or "."
+              start = moment(begin).toISOString().replace(/-|:|\./g, '');
+              end = moment(stop).toISOString().replace(/-|:|\./g, '');            
+            } else {
+              console.log("moment not defined");
+              // fall back to hideous manual construction
+              start = start_year + start_month + start_day + start_time;
+              end = end_year + end_month + end_day + end_time;
+            }
+
 
             // recurrence rule vars
             var rruleString;
