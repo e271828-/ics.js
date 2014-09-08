@@ -13,7 +13,8 @@ var ics = function() {
     var calendarEvents = [];
     var calendarStart = [
         'BEGIN:VCALENDAR',
-        'VERSION:2.0'
+        'VERSION:2.0',
+        'PRODID:-//Prompt.ly//Prompt.ly//EN'
     ].join(SEPARATOR);
     var calendarEnd = SEPARATOR + 'END:VCALENDAR';
 
