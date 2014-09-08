@@ -5,6 +5,15 @@ ics.js
 
 Now you can make calendar friendly files client-side.  It outputs .ics files, so the files are compatible with all modern calendar software (Outlook, Apple Calendar, Google, etc.)
 
+How To Build
+------------
+`npm install`
+`bower install`
+`grunt`
+
+This grabs all deps and produces a minified, concatenated output: ics.deps.min.js
+
+
 How To Use
 ----------
 Simply use invoke the object and use the functions...
