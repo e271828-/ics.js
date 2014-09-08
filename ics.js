@@ -98,13 +98,22 @@ var ics = function() {
             var end_minutes = ("00" + (end_date.getMinutes().toString())).slice(-2);
             var end_seconds = ("00" + (end_date.getMinutes().toString())).slice(-2);
 
+
             // Since some calendars don't add 0 second events, we need to remove time if there is none...
-            var start_time = '';
-            var end_time = '';
-            if (start_minutes + start_seconds + end_minutes + end_seconds !== 0) {
-                start_time = 'T' + start_hours + start_minutes + start_seconds;
-                end_time = 'T' + end_hours + end_minutes + end_seconds;
-            }
+            // XXX disabled incorrect check, breaks hours with minutes. See: 
+            // https://github.com/nwcell/ics.js/issues/8
+
+            // var start_time = '';
+            // var end_time = '';
+            // if (start_minutes + start_seconds + end_minutes + end_seconds !== 0) {
+            //     start_time = 'T' + start_hours + start_minutes + start_seconds;
+            //     end_time = 'T' + end_hours + end_minutes + end_seconds;
+            // }
+
+            // We simply skip the check for now.
+            var start_time = 'T' + start_hours + start_minutes + start_seconds;
+            var end_time = 'T' + end_hours + end_minutes + end_seconds;
+
 
             var start = start_year + start_month + start_day + start_time;
             var end = end_year + end_month + end_day + end_time;
